@@ -36,7 +36,7 @@ This project empirically validates that **injectivity** (unique input → unique
 │   ├── encoder_vs_decoder_comparison.png
 │   └── comparison_report.txt
 ├── requirements.txt                # Python dependencies
-├── testingData.json               # Legal Q&A dataset (17 samples)
+               
 └── README.md                      # This file
 ```
 
@@ -171,9 +171,9 @@ Both models show **strong separation**:
 - **BERT:** 12 layers, 768 hidden dim, 30,522 vocab
 
 ### Dataset
-- **Source:** Legal Q&A pairs (Pakistani law)
-- **Size:** 17 queries + 17 answers = 34 texts
-- **Domain:** ADR, Anti-Rape Act, Property Law, etc.
+- **Source:** Legal Q&A pairs
+- **Size:** 50 queries + 50 answers = 100 text
+- **Domain:** Legal queries and answers
 
 ### Metrics
 - **Distance:** L2 norm in 768-dimensional space
@@ -184,13 +184,21 @@ Both models show **strong separation**:
 
 Based on the paper:
 ```bibtex
-@article{morris2024language,
+@article{nikolaou2024language,
   title={Language Models are Injective and Hence Invertible},
-  author={Morris, John X. and Kuleshov, Volodymyr},
-  journal={arXiv preprint arXiv:2408.10345},
+  author={Nikolaou, Giorgos and Mencattini, Tommaso and Crisostomi, Donato and Santilli, Andrea and Panagakis, Yannis and Rodol\`{a}, Emanuele},
+  institution={Sapienza University of Rome, EPFL, University of Athens, Archimedes RC},
   year={2024}
 }
 ```
+
+**Authors:**
+- Giorgos Nikolaou (EPFL)
+- Tommaso Mencattini (Sapienza University of Rome, EPFL)
+- Donato Crisostomi (Sapienza University of Rome)
+- Andrea Santilli (Sapienza University of Rome)
+- Yannis Panagakis (University of Athens, Archimedes RC)
+- Emanuele Rodolà (Sapienza University of Rome)
 
 ## 🔮 Future Work
 
