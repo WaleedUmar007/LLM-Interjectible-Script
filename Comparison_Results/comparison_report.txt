@@ -1,0 +1,88 @@
+================================================================================
+ ENCODER vs DECODER INJECTIVITY COMPARISON
+ Based on: 'Language Models are Injective and Hence Invertible'
+================================================================================
+
+🎯 RESEARCH QUESTION
+--------------------------------------------------------------------------------
+Does the injectivity property proven for decoder models (GPT-2) also hold
+for encoder models (BERT)? Can prompts be reconstructed from both architectures?
+
+🏗️ ARCHITECTURAL DIFFERENCES
+--------------------------------------------------------------------------------
+GPT-2 (DECODER):
+  • Unidirectional (left-to-right) attention
+  • Autoregressive generation
+  • Predicts next token
+  • Natural 'last token' representation
+
+BERT (ENCODER):
+  • Bidirectional attention
+  • Processes entire sequence
+  • Masked language modeling
+  • Uses [CLS] token or pooling
+
+📊 QUANTITATIVE COMPARISON - QUERIES
+================================================================================
+Metric               GPT-2 (Decoder)           BERT (Encoder)           
+--------------------------------------------------------------------------------
+Min Distance         11.320743                 2.466962                 
+Mean Distance        25.565545                 5.124040                 
+Max Distance         37.293880                 7.359100                 
+Std Deviation        4.816464                  0.808114                 
+Injective?           ✓ YES                     ✓ YES                    
+
+📊 QUANTITATIVE COMPARISON - ANSWERS
+================================================================================
+Metric               GPT-2 (Decoder)           BERT (Encoder)           
+--------------------------------------------------------------------------------
+Min Distance         14.666336                 2.551789                 
+Mean Distance        22.178159                 4.994930                 
+Max Distance         30.160366                 6.702584                 
+Std Deviation        3.556958                  0.708754                 
+Injective?           ✓ YES                     ✓ YES                    
+
+🔍 KEY FINDINGS
+================================================================================
+1. BOTH ARCHITECTURES EXHIBIT INJECTIVITY
+   ✓ All pairwise distances > 0 for both GPT-2 and BERT
+   ✓ Each unique input maps to a unique hidden state
+   ✓ Injectivity is NOT architecture-specific
+
+2. SEPARATION STRENGTH
+   GPT-2 shows stronger separation (avg min: 12.993539)
+   BERT has smaller margins (avg min: 2.509375)
+   This may be due to BERT's bidirectional context compression
+
+3. IMPLICATIONS FOR PROMPT RECONSTRUCTION
+   ✓ SIPIT algorithm (from paper) designed for decoders
+   ✓ Encoder reconstruction would need different approach
+   ✓ Both architectures are theoretically invertible
+   ✓ Practical inversion may differ in complexity
+
+🎯 CONCLUSIONS
+================================================================================
+MAIN RESULT: The injectivity property described in the paper
+'Language Models are Injective and Hence Invertible' is NOT limited to
+decoder architectures. BERT encoders also exhibit this property.
+
+THEORETICAL IMPLICATIONS:
+  • Injectivity is a fundamental property of transformer architectures
+  • Both causal and bidirectional attention preserve uniqueness
+  • Input recovery should be possible for both architectures
+
+PRACTICAL IMPLICATIONS:
+  • Security concerns apply to all transformer-based models
+  • BERT embeddings (widely used) may leak input information
+  • Interpretability tools could recover inputs from embeddings
+  • Privacy-preserving techniques needed for both architectures
+
+FUTURE WORK:
+  • Develop encoder-specific inversion algorithms
+  • Test on larger models (BERT-large, RoBERTa, etc.)
+  • Investigate pooling strategy effects on invertibility
+  • Compare computational complexity of inversion
+
+================================================================================
+Report generated successfully.
+================================================================================
